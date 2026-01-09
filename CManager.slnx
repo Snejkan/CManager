@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="CManager.Application/CManager.Application.csproj" />
+  <Project Path="CManager.Domain/CManager.Domain.csproj" />
+  <Project Path="CManager.Infrastructure/CManager.Infrastructure.csproj" />
+  <Project Path="CManager.Presentation.ConsoleApp/CManager.Presentation.ConsoleApp.csproj" />
+  <Project Path="Test/CManager.Test.csproj" Id="b87a20ce-e630-4d4b-99d4-e7aa3b0322a1" />
+</Solution>
