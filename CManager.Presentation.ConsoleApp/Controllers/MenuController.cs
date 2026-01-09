@@ -12,11 +12,13 @@ public class MenuController(ICustomerService customerService)
         while (true)
         {
             Console.Clear();
-            Console.WriteLine("Customer Manager");
-            Console.WriteLine("1. Create Customer");
-            Console.WriteLine("2. View All Customers");
-            Console.WriteLine("3. Delete Customer");
-            Console.WriteLine("0. Exit");
+            Console.WriteLine("--- Welcome to CManager ---");
+            Console.WriteLine();
+            Console.WriteLine("1. Create customer");
+            Console.WriteLine("2. View all customers");
+            Console.WriteLine("3. Delete customer");
+            Console.WriteLine("4. Exit");
+            Console.WriteLine();
             Console.Write("Choose option: ");
 
 
@@ -36,7 +38,7 @@ public class MenuController(ICustomerService customerService)
                     DeleteCustomer();
                     break;
 
-                case "0":
+                case "4":
                     return;
 
                 default:
@@ -49,14 +51,14 @@ public class MenuController(ICustomerService customerService)
     private void CreateCustomer()
     {
         Console.Clear();
-        Console.WriteLine("Create Customer");
+        Console.WriteLine("Create customer");
 
         var firstName = InputHelper.ValidateInput("First name", ValidationType.Required);
         var lastName = InputHelper.ValidateInput("Last name", ValidationType.Required);
         var email = InputHelper.ValidateInput("Email", ValidationType.Email);
-        var phoneNumber = InputHelper.ValidateInput("PhoneNumber", ValidationType.Required);
+        var phoneNumber = InputHelper.ValidateInput("Phone number", ValidationType.Required);
         var streetAddress = InputHelper.ValidateInput("Address", ValidationType.Required);
-        var postalCode = InputHelper.ValidateInput("PostalCode", ValidationType.Required);
+        var postalCode = InputHelper.ValidateInput("Postal code", ValidationType.Required);
         var city = InputHelper.ValidateInput("City", ValidationType.Required);
 
         var result = _customerService.CreateCustomer(firstName, lastName, email, phoneNumber, streetAddress, postalCode, city);
@@ -132,19 +134,19 @@ public class MenuController(ICustomerService customerService)
             {
                 Console.WriteLine($"Email: {c.Email} | Name: {c.FirstName} {c.LastName}");
             }
-            Console.WriteLine("----------------------");
+           
             Console.WriteLine("Enter '0' to go back to menu");
             Console.Write("Enter email address of the customer to delete: ");
 
             var input = Console.ReadLine()?.Trim().ToLower();
 
-            // Ångra och gå tillbaka
+           
             if (input == "0")
             {
                 return;
             }
 
-            // Hitta kunden i listan baserat på e-post
+           
             var selectedCustomer = customers.FirstOrDefault(x => x.Email.ToLower() == input);
 
             if (selectedCustomer == null)
@@ -153,7 +155,7 @@ public class MenuController(ICustomerService customerService)
                 continue;
             }
 
-            // Bekräftelse
+           
             Console.WriteLine($"\nYou have selected: {selectedCustomer.FirstName} {selectedCustomer.LastName} ({selectedCustomer.Email})");
 
             while (true)
@@ -177,7 +179,7 @@ public class MenuController(ICustomerService customerService)
                 }
                 else if (confirmation == "n")
                 {
-                    break; // Gå tillbaka till e-post-inmatningen
+                    break; 
                 }
                 else
                 {
